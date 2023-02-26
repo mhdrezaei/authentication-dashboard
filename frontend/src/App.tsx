@@ -1,7 +1,12 @@
 import React from "react";
+import LoginForm from "./componnents/LoginForm";
 
 function App() {
-  return <div className="App">hello</div>;
+  return (
+    <div className="App">
+      <LoginForm />
+    </div>
+  );
 }
 
 export default App;
