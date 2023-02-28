@@ -1,36 +1,19 @@
-import axios from "axios";
-import { type } from "os";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import UserContext, { userContextType } from "../context/userContext";
 
 type formState = {
   email: string;
   password: string;
 };
 function LoginForm() {
+  const { login } = useContext(UserContext) as userContextType;
   const [formData, setFormData] = useState<formState>({
     email: "",
     password: "",
   });
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(formData);
-
-    axios
-      .post("http://localhost:5000/api/users/login", formData)
-      .then((response) => {
-        const data = response.data;
-        const convertedData = JSON.stringify(data);
-
-        //set JWT token to local
-        localStorage.setItem("user", convertedData );
-
-        //set token to axios common header
-        //  setAuthToken(token);
-
-        //redirect user to home page
-        // window.location.href = "/";
-      })
-      .catch((err) => console.log(err));
+    login(formData);
   };
 
   const onChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
