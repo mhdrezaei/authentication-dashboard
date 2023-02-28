@@ -1,21 +1,58 @@
-import React from "react";
-
+import axios from "axios";
+import React , {useState} from "react";
+type formState = {
+  email: string;
+  password: string;
+};
 function LoginForm() {
+  const [formData, setFormData] = useState<formState>({email : '' , password : ''})
+  const handleSubmit = (event : React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log(formData)
+    
+    axios.post("https://localhost:8000/api/users/login" , formData)
+    .then(response => {
+      const user = response
+      console.log(user)
+    })
+
+
+  }
+
+ 
+  const onChange : React.ChangeEventHandler<HTMLInputElement> = (e) =>{
+   
+    const target = e.target as HTMLInputElement; 
+      setFormData((prevState) => {
+          return {
+            ...prevState,
+            [target.id] : target.value
+          }
+        })
+    
+
+}
   return (
     <div className="flex items-center justify-center h-screen">
-      <form className="flex flex-col items-center justify-center w-1/3 h-1/2 space-y-5 round p-48 bg-accentCyan border-slate-300">
+      <form onSubmit={handleSubmit} className="flex flex-col items-center justify-center w-1/3 h-1/2 space-y-5 round p-48 bg-accentCyan border-slate-300">
         <h3 className="w-60 text-darkBlue text-xl font-sans">
-          Wellcome to MainBrain{" "}
+          Wellcome to MainBrain
         </h3>
         <input
+          id="email"
+          name="email"
           type="text"
           placeholder="Email"
           className="bg-darkBlue text-lg p-3 px-6 rounded-md border-none outline-none focus:shadow-md"
+          onChange={onChange}
         />
         <input
+        id="password"
+        name="password"
           type="password"
           placeholder="Password"
           className="bg-darkBlue text-lg p-3 px-6 rounded-md border-none outline-none focus:shadow-md"
+          onChange={onChange}
         />
 
         <button
