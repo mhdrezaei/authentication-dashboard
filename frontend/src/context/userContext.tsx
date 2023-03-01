@@ -8,6 +8,7 @@ type formDataType = {
 export type userContextType = {
   isLogin: boolean;
   login: (formData: formDataType) => void;
+  confirmLogin: () => void;
 };
 
 const UserContext = createContext<userContextType | null>(null);
@@ -35,8 +36,12 @@ export const UserProvider = ({
       .catch((err) => console.log(err));
   };
 
+  const confirmLogin = () => {
+    setIsLogin(true);
+  };
+
   return (
-    <UserContext.Provider value={{ isLogin, login }}>
+    <UserContext.Provider value={{ isLogin, login, confirmLogin }}>
       {children}
     </UserContext.Provider>
   );

@@ -7,10 +7,15 @@ import {
 } from "react-router-dom";
 import LoginForm from "./componnents/LoginForm";
 import UserContext, { userContextType } from "./context/userContext";
+import hasJwt from "./helper/checkJwt";
 import Dashboard from "./pages/Dashboard";
 
 function App() {
-  const { isLogin } = useContext(UserContext) as userContextType;
+  const { isLogin, confirmLogin } = useContext(UserContext) as userContextType;
+  const signIn = hasJwt();
+  if (signIn) {
+    confirmLogin();
+  }
   return (
     <Router>
       <Routes>
@@ -20,7 +25,7 @@ function App() {
             isLogin ? <Navigate replace to="dashboard" /> : <LoginForm />
           }
         />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={isLogin && <Dashboard />} />
       </Routes>
     </Router>
   );
