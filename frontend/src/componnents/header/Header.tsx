@@ -1,9 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import ThemeContext, { themeContextType } from "../../context/themeContext";
+
 function Header() {
   const { isDark, isRtl, switchDir, switchTheme } = useContext(
     ThemeContext
   ) as themeContextType;
+
+  useEffect(() => {
+    switchTheme();
+    switchDir();
+  }, []);
   return (
     <header className="mx-auto mt-4 px-6 text-center h-40 md:h-20">
       <div className="flex items-center justify-between">
@@ -13,7 +19,7 @@ function Header() {
           <button
             id="theme-toggle"
             onClick={switchTheme}
-            className="text-gray-500 rtl:ml-2 ltr:mr-2 ring-4 ring-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2 5"
+            className="text-gray-500 mx-2 rtl:ml-2 ltr:mr-2 ring-4 ring-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2 5"
           >
             {/* Dark SVG Icon */}
             <svg
