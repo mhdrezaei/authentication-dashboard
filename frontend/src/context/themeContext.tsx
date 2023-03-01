@@ -1,14 +1,10 @@
 import { createContext, useState } from "react";
 
-const themeToggleBtn = document.getElementById("theme-toggle")!;
-const themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon")!;
-const themeToggleLightIcon = document.getElementById(
-  "theme-toggle-light-icon"
-)!;
-
 export type themeContextType = {
   isDark: boolean;
+  isRtl: boolean;
   switchTheme: () => void;
+  switchDir: () => void;
 };
 const ThemeContext = createContext<themeContextType | null>(null);
 
@@ -18,6 +14,7 @@ export const ThemeProvider = ({
   children: React.ReactElement;
 }) => {
   const [isDark, setIsDark] = useState(true);
+  const [isRtl, setIsRtl] = useState(false);
 
   const switchTheme = () => {
     if (localStorage.getItem("color-theme")) {
@@ -48,8 +45,46 @@ export const ThemeProvider = ({
     }
   };
 
+  const switchDir = () => {
+    if (localStorage.getItem("lang-theme")) {
+      // If en, make fa and save in localstorage
+      if (localStorage.getItem("lang-theme") === "en") {
+        document.documentElement.removeAttribute("dir");
+        document.documentElement.setAttribute("dir", "rtl");
+        localStorage.setItem("lang-theme", "fa");
+        setIsRtl(true);
+      } else {
+        document.documentElement.removeAttribute("dir");
+        document.documentElement.setAttribute("dir", "ltr");
+        localStorage.setItem("lang-theme", "en");
+        setIsRtl(false);
+      }
+    } else {
+      // If not in localstorage
+      if (document.documentElement.getAttribute("dir")) {
+        const dir = document.documentElement.getAttribute("dir");
+        console.log(dir);
+        if (dir === "rtl") {
+          document.documentElement.removeAttribute("dir");
+          document.documentElement.setAttribute("dir", "ltr");
+          localStorage.setItem("lang-theme", "en");
+          setIsRtl(false);
+        } else {
+          document.documentElement.removeAttribute("dir");
+          document.documentElement.setAttribute("dir", "rtl");
+          localStorage.setItem("lang-theme", "fa");
+          setIsRtl(true);
+        }
+      } else {
+        document.documentElement.setAttribute("dir", "ltr");
+        localStorage.setItem("lang-theme", "en");
+        setIsRtl(false);
+      }
+    }
+  };
+
   return (
-    <ThemeContext.Provider value={{ isDark, switchTheme }}>
+    <ThemeContext.Provider value={{ isDark, isRtl, switchDir, switchTheme }}>
       {children}
     </ThemeContext.Provider>
   );

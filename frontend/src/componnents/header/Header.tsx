@@ -1,17 +1,19 @@
 import React, { useContext } from "react";
 import ThemeContext, { themeContextType } from "../../context/themeContext";
 function Header() {
-  const { isDark, switchTheme } = useContext(ThemeContext) as themeContextType;
+  const { isDark, isRtl, switchDir, switchTheme } = useContext(
+    ThemeContext
+  ) as themeContextType;
   return (
-    <header className="mx-auto mt-10 px-6 text-center h-40 md:h-20">
+    <header className="mx-auto mt-4 px-6 text-center h-40 md:h-20">
       <div className="flex items-center justify-between">
         <div className="bg-logo-light-mode dark:bg-logo-dark-mode bg-no-repeat bg-center h-20 w-48"></div>
-        <div className="flex justify-end items-center">
+        <div className="flex justify-center items-center">
           {/* Dark/Light Mode Button  */}
           <button
             id="theme-toggle"
             onClick={switchTheme}
-            className="text-gray-500 ring-4 ring-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2 5"
+            className="text-gray-500 rtl:ml-2 ltr:mr-2 ring-4 ring-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2 5"
           >
             {/* Dark SVG Icon */}
             <svg
@@ -38,7 +40,26 @@ function Header() {
               ></path>
             </svg>
           </button>
-
+          <button
+            id="theme-toggle"
+            onClick={switchDir}
+            className="text-gray-500 mx-1 ring-4 ring-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2 5"
+          >
+            <p
+              className={
+                isRtl ? "hidden" : "text-base w-5 h-5 dark:text-gray-400"
+              }
+            >
+              EN
+            </p>
+            <p
+              className={
+                isRtl ? "text-base w-5 h-5 dark:text-gray-400" : "hidden"
+              }
+            >
+              FA
+            </p>
+          </button>
         </div>
       </div>
     </header>
