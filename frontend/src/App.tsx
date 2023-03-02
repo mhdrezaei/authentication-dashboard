@@ -1,4 +1,7 @@
 import React, { useContext } from "react";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 import {
   BrowserRouter as Router,
   Navigate,
@@ -17,6 +20,7 @@ function App() {
     confirmLogin();
   }
   return (
+    <>
     <Router>
       <Routes>
         <Route
@@ -30,6 +34,8 @@ function App() {
         <Route path="*" element={<Login />} />
       </Routes>
     </Router>
+    <ToastContainer/>
+    </>
   );
 }
 
