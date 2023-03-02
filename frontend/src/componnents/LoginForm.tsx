@@ -26,12 +26,14 @@ function LoginForm() {
     });
   };
   return (
-    <div className="flex items-center justify-center h-screen">
+    <section className="flex items-center justify-center w-screen h-screen bg-gradient-to-tr from-darkBlue to-accentBlue">
+
+    <div className="flex items-center justify-start w-2/3 h-1/2 rounded-md shadow-md  login-form">
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col items-center justify-center w-1/3 h-1/2 space-y-5 round p-48 bg-accentCyan border-slate-300"
-      >
-        <h3 className="w-60 text-darkBlue text-xl font-sans">
+        className="flex flex-col items-center justify-start w-1/2  space-y-5  border-slate-300"
+        >
+        <h3 className=" text-darkBlue text-4xl font-sans">
           Wellcome to MainBrain
         </h3>
         <input
@@ -39,23 +41,24 @@ function LoginForm() {
           name="email"
           type="text"
           placeholder="Email"
-          className="bg-darkBlue text-lg p-3 px-6 rounded-md border-none outline-none focus:shadow-md"
+          className=" text-lg p-3 px-6 rounded-md border-none outline-none focus:shadow-md"
           onChange={onChange}
-        />
+          />
         <input
           id="password"
           name="password"
           type="password"
           placeholder="Password"
-          className="bg-darkBlue text-lg p-3 px-6 rounded-md border-none outline-none focus:shadow-md"
+          className=" text-lg p-3 px-6 rounded-md border-none outline-none focus:shadow-md"
           onChange={onChange}
-        />
+          />
 
         <button className="bg-accentBlue text-white text-lg rounded-md p-2 px-12 hover:opacity-80 hover:cursor-pointer hover:shadow-md">
           Login
         </button>
       </form>
     </div>
+          </section>
   );
 }
 
