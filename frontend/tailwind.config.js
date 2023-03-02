@@ -21,6 +21,7 @@ module.exports = {
         "logo-light-mode": "url('./assets/images/logo-light-mode.svg')",
         "curvy-dark-mode": "url('./assets/images/bg-curvy-dark-mode.svg')",
         "curvy-light-mode": "url('./assets/images/bg-curvy-light-mode.svg')",
+        "login-dark-mode": "url('./assets/images/login-bg.jpg')",
       }),
     },
   },
