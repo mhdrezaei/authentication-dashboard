@@ -36,3 +36,9 @@ input:focus:invalid {
     url(./assets/images/login-bg.jpg);
   background-size: cover;
 }
+.input-error {
+  border-bottom: 3px solid hsl(10, 60%, 50%);
+}
+.input-success {
+  border-bottom: 3px solid hsl(115, 60%, 50%);
+}
