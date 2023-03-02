@@ -1,5 +1,8 @@
 import React, { useState, useContext } from "react";
 import UserContext, { userContextType } from "../context/userContext";
+import { toast } from 'react-toastify';
+import emailValidation from "../helper/email-validation";
+
 
 type formState = {
   email: string;
@@ -11,8 +14,28 @@ function LoginForm() {
     email: "",
     password: "",
   });
+  const [hasError , setHasError] = useState({hasEmailError : false , okEmail : false ,emailError : "input-error" ,hasPasswordError : false , okPassword : false ,passwordError : "input-error"})
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if(formData.email === "" || formData.email.trim() === "" || formData.password === ""){
+      toast.error('All field are necessary!',{
+        position: "bottom-center",
+        theme: "colored"
+      })
+      setHasError((prevState) =>{
+        return {...prevState , hasEmailError : true , hasPasswordError : true } 
+
+       })
+      return
+    }
+    if(!emailValidation(formData.email)){
+      toast.error('Enter valid Email!',{
+        position: "bottom-center",
+        theme: "colored"
+      })
+      return
+
+    }
     login(formData);
   };
 
@@ -25,6 +48,34 @@ function LoginForm() {
       };
     });
   };
+  const onBlurHandler :React.FocusEventHandler<HTMLInputElement>  = (event) =>{
+    const id = event.target.id;
+    const value = event.target.value;
+    if(id === "email"){
+       
+      if(!emailValidation(value)){
+        setHasError((prevState) =>{
+         return {...prevState , hasEmailError : true } 
+
+        })
+      }else if(emailValidation(value)){
+        setHasError((prevState) =>{
+          return {...prevState , hasEmailError : false , okEmail : true } 
+         })
+      }
+    
+    }if(id === "password"){
+      if(value === ""){
+      setHasError((prevState) =>{
+        return {...prevState , hasPasswordError : true } 
+       })
+      }else{
+        setHasError((prevState) =>{
+          return {...prevState , hasPasswordError : false , okPassword : true } 
+         })
+      }
+    }
+  }
   return (
     <section className="flex items-center justify-center w-screen h-screen bg-gradient-to-tr from-darkBlue to-accentBlue">
 
@@ -41,16 +92,18 @@ function LoginForm() {
           name="email"
           type="text"
           placeholder="Email"
-          className=" text-lg p-3 px-6 rounded-md border-none outline-none focus:shadow-md"
+          className={`${hasError.hasEmailError ? "input-error" : ""} ${hasError.okEmail ? "input-success" : ""} "text-lg p-3 px-6 rounded-md border-none outline-none focus:shadow-md"`}
           onChange={onChange}
+          onBlur={onBlurHandler}
           />
         <input
           id="password"
           name="password"
           type="password"
           placeholder="Password"
-          className=" text-lg p-3 px-6 rounded-md border-none outline-none focus:shadow-md"
+          className={`${hasError.hasPasswordError ? "input-error" : ""} ${hasError.okPassword ? "input-success" : ""} text-lg p-3 px-6 rounded-md border-none outline-none focus:shadow-md"`}
           onChange={onChange}
+          onBlur={onBlurHandler}
           />
 
         <button className="bg-accentBlue text-white text-lg rounded-md p-2 px-12 hover:opacity-80 hover:cursor-pointer hover:shadow-md">
