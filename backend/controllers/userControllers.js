@@ -50,7 +50,7 @@ const registerUser = asyncHandler(async (req, res) => {
 // @desc login a users
 // @route /api/users/login
 // @access public
-const loginUser = asyncHandler(async (req, res) => {
+const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
   const user = await User.findOne({ email });
@@ -64,10 +64,10 @@ const loginUser = asyncHandler(async (req, res) => {
       token: generateToken(user._id),
     });
   } else {
-    res.status(401);
-    throw new Error("Invalid credentials");
+    res.status(401).json({ message: "Invalid credentials!" });
+    // throw new Error("Invalid credentials");
   }
-});
+};
 
 // @desc    Get current user
 // @route   /api/users/me
