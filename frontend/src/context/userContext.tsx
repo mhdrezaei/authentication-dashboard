@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { toast } from 'react-toastify';
 
 type formDataType = {
@@ -34,15 +34,8 @@ export const UserProvider = ({
   const login = (formData: formDataType) => {
     axios
       .post("http://localhost:5000/api/users/login", formData)
-      .then((response) => {
-        console.log(response)
-        if (!response.status) {
-          toast.error(`This is an HTTP error: The status is ${response.status}` ,{
-            position: "bottom-center",
-            theme: "colored"
-          })
-          return
-          }
+      .then((response :AxiosResponse) => {
+        console.log(response.data)
         const data = response.data;
         const convertedData = JSON.stringify(data);
         setIsLogin(true);
@@ -58,8 +51,7 @@ export const UserProvider = ({
         //  setAuthToken(token);
       })
       .catch((err) => {
-        console.log(err)
-        toast.error(err,{
+        toast.error(err.response.data.message,{
           position: "bottom-center",
           theme: "colored"
         })

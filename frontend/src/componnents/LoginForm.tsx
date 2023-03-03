@@ -47,6 +47,8 @@ function LoginForm() {
     setTimeout(() => {
       login(formData);
       loading(false)
+      setFormData({email : "" , password : ""})
+      setHasError({hasEmailError : true , okEmail : false ,emailError : "input-error" ,hasPasswordError : true , okPassword : false ,passwordError : "input-error"})
     } , 2000)
   };
 
