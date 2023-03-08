@@ -5,6 +5,9 @@
 body {
   @apply dark:bg-darkBlue5 dark:text-white font-opensans;
 }
+.btn-header {
+  @apply text-accentBlueLight mx-2 rtl:ml-2 ltr:mr-2 rounded-lg text-base p-2 ring-1 ring-gray-300 dark:ring-darkBlue1 dark:hover:ring-accentBlue hover:ring-gray-400 hover:bg-gray-200 dark:hover:bg-darkBlue3 focus:outline-none focus:ring-1 focus:ring-gray-200 dark:focus:ring-darkBlue2;
+}
 input {
   font-size: 1.5rem;
   font-family: inherit;
