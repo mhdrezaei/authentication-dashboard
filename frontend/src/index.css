@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply dark:bg-darkBlue dark:text-white font-opensans;
+  @apply dark:bg-darkBlue5 dark:text-white font-opensans;
 }
 input {
   font-size: 1.5rem;
