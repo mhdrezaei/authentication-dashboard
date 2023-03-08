@@ -19,12 +19,12 @@ function Header() {
           <button
             id="theme-toggle"
             onClick={switchTheme}
-            className="text-accentBlueLight mx-2 rtl:ml-2 ltr:mr-2 rounded-lg text-md p-2 ring-1 ring-gray-300 dark:ring-darkBlue1 dark:hover:ring-accentBlue hover:ring-gray-400 hover:bg-gray-200 dark:hover:bg-darkBlue3 focus:outline-none focus:ring-1  focus:ring-gray-200 dark:focus:ring-darkBlue2"
+            className="btn-header"
           >
             {/* Dark SVG Icon */}
             <svg
               id="theme-toggle-dark-icon"
-              className={isDark ? "w-6 h-6 hidden" : "w-6 h-6"}
+              className={isDark ? "w-5 h-5 hidden" : "w-5 h-5"}
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +34,7 @@ function Header() {
             {/* Light SVG Icon  */}
             <svg
               id="theme-toggle-light-icon"
-              className={isDark ? "w-6 h-6" : "w-6 h-6 hidden"}
+              className={isDark ? "w-5 h-5" : "w-5 h-5 hidden"}
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +49,7 @@ function Header() {
           <button
             id="theme-toggle"
             onClick={switchDir}
-            className="text-accentBlueLight mx-2 rtl:ml-2 ltr:mr-2 rounded-lg text-md p-2 ring-1 ring-gray-300 dark:ring-darkBlue1 dark:hover:ring-accentBlue hover:ring-gray-400 hover:bg-gray-200 dark:hover:bg-darkBlue3 focus:outline-none focus:ring-1  focus:ring-gray-200 dark:focus:ring-darkBlue2"
+            className="btn-header"
           >
             <p
               className={
