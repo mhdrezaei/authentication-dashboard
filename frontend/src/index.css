@@ -8,6 +8,12 @@ body {
 .btn-header {
   @apply text-accentBlueLight mx-2 rtl:ml-2 ltr:mr-2 rounded-lg text-base p-2 ring-1 ring-gray-300 dark:ring-darkBlue1 dark:hover:ring-accentBlue hover:ring-gray-400 hover:bg-gray-200 dark:hover:bg-darkBlue3 focus:outline-none focus:ring-1 focus:ring-gray-200 dark:focus:ring-darkBlue2;
 }
+.nav-item {
+  @apply text-lg text-gray-700 bg-gray-200 border-t-2 border-t-gray-400 p-2 dark:text-gray-200 dark:bg-darkBlue2  dark:border-t-0 dark:border-t-accentBlue;
+}
+.nav-item-active {
+  @apply dark:bg-darkBlue1 dark:text-accentBlue;
+}
 input {
   font-size: 1.5rem;
   font-family: inherit;
