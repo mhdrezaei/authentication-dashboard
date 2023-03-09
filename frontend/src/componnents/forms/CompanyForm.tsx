@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../common/Button";
 
 const CompanyForm = () => {
   return (
@@ -130,6 +131,9 @@ const CompanyForm = () => {
               placeholder="90210"
             />
           </div>
+        </div>
+        <div className="w-full text-center">
+          <Button label="Submit" />
         </div>
       </form>
     </div>
