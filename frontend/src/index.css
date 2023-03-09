@@ -3,16 +3,22 @@
 @tailwind utilities;
 
 body {
-  @apply dark:bg-darkBlue5 dark:text-white font-opensans;
+  @apply bg-gray-100 dark:bg-darkBlue5 dark:text-gray-300 font-opensans;
 }
 .btn-header {
-  @apply text-accentBlueLight mx-2 rtl:ml-2 ltr:mr-2 rounded-lg text-base p-2 ring-1 ring-gray-300 dark:ring-darkBlue1 dark:hover:ring-accentBlue hover:ring-gray-400 hover:bg-gray-200 dark:hover:bg-darkBlue3 focus:outline-none focus:ring-1 focus:ring-gray-200 dark:focus:ring-darkBlue2;
+  @apply text-accentBlueDark mx-2 rtl:ml-2 ltr:mr-2 rounded-lg text-base p-2 ring-1 ring-gray-300 dark:ring-darkBlue1 dark:hover:ring-accentBlue hover:ring-gray-400 hover:bg-gray-200 dark:hover:bg-darkBlue3 focus:outline-none focus:ring-1 focus:ring-gray-200 dark:focus:ring-darkBlue2;
 }
 .nav-item {
-  @apply text-lg text-gray-700 bg-gray-200 border-t-2 border-t-gray-400 p-2 dark:text-gray-200 dark:bg-darkBlue2  dark:border-t-0 dark:border-t-accentBlue;
+  @apply text-lg text-gray-700 bg-gray-200 p-2 dark:text-gray-200 dark:bg-darkBlue2  dark:border-t-0 dark:border-t-accentBlue;
 }
 .nav-item-active {
-  @apply dark:bg-darkBlue1 dark:text-accentBlue;
+  @apply bg-gray-50 text-accentBlueDark dark:bg-darkBlue1 dark:text-accentBlue;
+}
+.section-admin {
+  @apply w-3/4 h-3/4 mx-auto p-8 bg-gray-50 dark:bg-darkBlue1 dark:text-gray-200;
+}
+.form-label {
+  @apply block uppercase tracking-wide text-gray-700 dark:text-accentBlueLight text-sm font-bold mb-2;
 }
 input {
   font-size: 1.5rem;

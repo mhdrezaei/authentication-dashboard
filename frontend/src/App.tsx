@@ -12,6 +12,7 @@ import UserContext, { userContextType } from "./context/userContext";
 import hasJwt from "./helper/checkJwt";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
+import AddCompany from "./pages/AddCompany";
 
 function App() {
   const { isLogin, confirmLogin } = useContext(UserContext) as userContextType;
@@ -31,6 +32,11 @@ function App() {
           path="/dashboard"
           element={isLogin ? <Dashboard /> : <Navigate replace to="/" />}
         />
+        <Route
+          path="/add-company"
+          element={isLogin ? <AddCompany /> : <Navigate replace to="/" />}
+        />
+        
         <Route path="*" element={<Login />} />
       </Routes>
     </Router>

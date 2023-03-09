@@ -8,9 +8,9 @@ const Navbar = () => {
     <div className='flex justify-center items-center'>
         <ul className='flex justify-center items-center space-x-3'>
             <li className='nav-item nav-item-active'><Link className='flex justify-center items-center space-x-3' to="/dashboard" ><AiOutlineDashboard size={24}/><span>Dashboard</span></Link></li>
-            <li className='nav-item' ><Link className='flex justify-center items-center space-x-3' to="/dashboard" ><MdOutlineDomainAdd size={24} /><span>Add company</span></Link></li>
-            <li className='nav-item' ><Link className='flex justify-center items-center space-x-3' to="/dashboard" ><MdPersonAdd size={24} /><span>Add user</span></Link></li>
-            <li className='nav-item' ><Link className='flex justify-center items-center space-x-3' to="/dashboard" ><BsEnvelopeFill size={24} /><span>messages</span></Link></li>
+            <li className='nav-item' ><Link className='flex justify-center items-center space-x-3' to="/add-company" ><MdOutlineDomainAdd size={24} /><span>Add company</span></Link></li>
+            <li className='nav-item' ><Link className='flex justify-center items-center space-x-3' to="/add-user" ><MdPersonAdd size={24} /><span>Add user</span></Link></li>
+            <li className='nav-item' ><Link className='flex justify-center items-center space-x-3' to="/messages" ><BsEnvelopeFill size={24} /><span>messages</span></Link></li>
         </ul>
     </div>
   )
