@@ -1,21 +1,22 @@
 import { createContext, useState } from "react";
 import { toast } from "react-toastify";
-
+export type companyType = {
+  name :string , family:string, title:string, email:string, image : string , address:string, phone:string, zip:string, city:string, registration:string  
+}
 export type companyDataType = {
-  image: string;
-  newCompany: {};
+  img: FormData;
+  newCompany: companyType;
 };
 
 export type companyContextType = {
-  isLogin: boolean;
   isLoading: boolean;
-  addCompany: (newCompany: {}, image: string) => void;
+  addNewCompany: (newCompany: companyType, img :FormData) => void;
   loading: (status: boolean) => void;
 };
 
 const CompanyContext = createContext<companyContextType | null>(null);
 
-export const UserProvider = ({
+export const CompanyProvider = ({
   children,
 }: {
   children: React.ReactElement;
@@ -27,23 +28,24 @@ export const UserProvider = ({
     setIsLoading(status);
   };
 
-  // add new job
-  const addCompany = (newCompany: {}, image: string) => {
-    // console.log(newJob)
+  // add new company
+  const addNewCompany = (newCompany: companyType, img: FormData) => {
+    console.log(img)
     let imgUrl;
     const res = fetch("http://localhost:5000/upload-file", {
       method: "POST",
-      body: image,
+      body: img,
     })
-      .then((res) => res.json())
-      .then((res) => {
-        // setImageUrl(JSON.stringify(`${res.img}`));
-        imgUrl = res.img;
-
-        if (imgUrl) {
-          newCompany.image = imgUrl;
+    .then((res) => res.json())
+    .then((res) => {
+      // setImageUrl(JSON.stringify(`${res.img}`));
+      imgUrl = res.img;
+      
+      if (imgUrl) {
+        newCompany.image = imgUrl;
+        console.log(newCompany)
         }
-        const addJob = fetch("http://localhost:5000/api/v1/job/new", {
+        const addJob = fetch("http://localhost:5000/api/company/new", {
           method: "POST",
           mode: "cors",
           headers: {
@@ -71,7 +73,7 @@ export const UserProvider = ({
   };
 
   return (
-    <CompanyContext.Provider value={{ isLoading, loading, addCompany }}>
+    <CompanyContext.Provider value={{ isLoading, loading, addNewCompany }}>
       {children}
     </CompanyContext.Provider>
   );
