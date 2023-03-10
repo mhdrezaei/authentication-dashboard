@@ -43,7 +43,7 @@ const CompanyForm = () => {
 
   const jobSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    loading(false);
+    loading(true);
 
     if (
       name === "" ||
@@ -61,14 +61,28 @@ const CompanyForm = () => {
       registration === ""
     ) {
       toast.error("All field are necessary!!!");
-      loading(true);
+      loading(false);
       return;
     }
     
+    setTimeout(()=>{
+      addNewCompany(formData , image);
+      loading(false);
+      setFormData({
+        name: "",
+        family : "",
+        title: "",
+        address: "",
+        email: "",
+        phone: "",
+        zip: "",
+        city:"",
+        image : "",
+        registration : ""
+      })
+    }, 2000)
 
-     addNewCompany(formData , image);
     
-    loading(true);
     
   };
 
@@ -85,7 +99,9 @@ const CompanyForm = () => {
 
   return (
     <div>
-      <form onSubmit={jobSubmit} className="w-full max-w-3xl">
+      <form onSubmit={jobSubmit} className="w-full min-w-fit">
+        <div className="flex justify-between" >
+        <div className="flex  flex-col justify-start" >
         <div className="flex flex-wrap -mx-3 mb-6">
           <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label className="form-label" htmlFor="name">
@@ -98,6 +114,7 @@ const CompanyForm = () => {
               type="text"
               placeholder="Jane"
               onChange={onChange}
+              value={name}
             />
           </div>
           <div className="w-full md:w-1/2 px-3">
@@ -111,6 +128,7 @@ const CompanyForm = () => {
               type="text"
               placeholder="Doe"
               onChange={onChange}
+              value={family}
             />
           </div>
         </div>
@@ -127,6 +145,7 @@ const CompanyForm = () => {
               type="text"
               placeholder="Google"
               onChange={onChange}
+              value={title}
             />
           </div>
           <div className="w-full md:w-1/2 px-3">
@@ -140,6 +159,12 @@ const CompanyForm = () => {
               type="file"
               onChange={imgFilehandler}
             />
+           
+          </div>
+        </div>
+        <div className="flex flex-col justify-start w-96 lg:hidden " >
+          <div className="mt-4 mb-8 p-4 w-96 h-96 border border-dashed border-accentBlueDark text-center text-accentBlueDark" >
+            {preview ? <img src={preview} className="w-full h-full" /> : <span className="flex flex-col justify-center items-center w-full h-full">Company Logo</span>}
           </div>
         </div>
 
@@ -155,6 +180,7 @@ const CompanyForm = () => {
               type="text"
               placeholder="Iran , Tehran , Vanak Square , ..."
               onChange={onChange}
+              value={address}
             />
         
           </div>
@@ -172,6 +198,7 @@ const CompanyForm = () => {
               type="email"
               placeholder="mycompany@gmail.com"
               onChange={onChange}
+              value={email}
             />
           </div>
           <div className="w-full md:w-1/2 px-3">
@@ -185,6 +212,7 @@ const CompanyForm = () => {
               type="tel"
               placeholder="0211111111"
               onChange={onChange}
+              value={phone}
             />
           </div>
         </div>
@@ -201,6 +229,7 @@ const CompanyForm = () => {
               type="number"
               placeholder="123456789"
               onChange={onChange}
+              value={registration}
             />
           </div>
           <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -212,8 +241,9 @@ const CompanyForm = () => {
               id="zip"
               name="zip"
               type="number"
-              placeholder="Tehran"
+              placeholder="1234567890"
               onChange={onChange}
+              value={zip}
             />
           </div>
           <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -225,12 +255,21 @@ const CompanyForm = () => {
               id="city"
               name="city"
               type="text"
+              placeholder="Tehran"
               onChange={onChange}
+              value={city}
             />
           </div>
         </div>
         <div className="w-full text-center">
-          <Button label="Submit" />
+          <Button label={isLoading ? "Loading..." : "Submit"} />
+        </div>
+        </div>
+        <div className="hidden lg:flex flex-col justify-start items-center w-96 " >
+          <div className="mt-8 p-4  lg:w-52 lg:h-52 xl:w-64 xl:h-64 border border-dashed border-accentBlueDark text-center text-accentBlueDark" >
+            {preview ? <img src={preview} className="w-full h-full" /> : <span className="flex flex-col justify-center items-center w-full h-full">Company Logo</span>}
+          </div>
+        </div>
         </div>
       </form>
     </div>

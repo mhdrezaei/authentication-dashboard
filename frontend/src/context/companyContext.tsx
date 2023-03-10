@@ -38,12 +38,10 @@ export const CompanyProvider = ({
     })
     .then((res) => res.json())
     .then((res) => {
-      // setImageUrl(JSON.stringify(`${res.img}`));
       imgUrl = res.img;
       
       if (imgUrl) {
         newCompany.image = imgUrl;
-        console.log(newCompany)
         }
         const addJob = fetch("http://localhost:5000/api/company/new", {
           method: "POST",
@@ -67,7 +65,7 @@ export const CompanyProvider = ({
           })
           .catch((err) => {
             console.log(err.message);
-            toast.error(err);
+            toast.error(err.message);
           });
       });
   };
