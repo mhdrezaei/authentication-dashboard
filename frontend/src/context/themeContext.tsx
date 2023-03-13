@@ -5,6 +5,7 @@ export type themeContextType = {
   isRtl: boolean;
   switchTheme: () => void;
   switchDir: () => void;
+  selectLang: (lang: string) => void;
 };
 const ThemeContext = createContext<themeContextType | null>(null);
 
@@ -48,7 +49,7 @@ export const ThemeProvider = ({
   const switchDir = () => {
     if (localStorage.getItem("lang-theme")) {
       // If en, make fa and save in localstorage
-      if (localStorage.getItem("lang-theme") === "en") {
+      if (localStorage.getItem("lang-theme") === "en" || "de") {
         document.documentElement.removeAttribute("dir");
         document.documentElement.setAttribute("dir", "rtl");
         localStorage.setItem("lang-theme", "fa");
@@ -83,8 +84,25 @@ export const ThemeProvider = ({
     }
   };
 
+  const selectLang = (lang: string) => {
+    if (lang === "fa") {
+      window.localStorage.setItem("lang-theme", "fa");
+      document.documentElement.setAttribute("dir", "rtl");
+    }
+    if (lang === "en") {
+      window.localStorage.setItem("lang-theme", "en");
+      document.documentElement.setAttribute("dir", "ltr");
+    }
+    if (lang === "de") {
+      window.localStorage.setItem("lang-theme", "de");
+      document.documentElement.setAttribute("dir", "ltr");
+    }
+  };
+
   return (
-    <ThemeContext.Provider value={{ isDark, isRtl, switchDir, switchTheme }}>
+    <ThemeContext.Provider
+      value={{ isDark, isRtl, switchDir, switchTheme, selectLang }}
+    >
       {children}
     </ThemeContext.Provider>
   );

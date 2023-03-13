@@ -20,8 +20,10 @@
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
     "express-fileupload": "^1.4.0",
+    "i18next": "^22.4.11",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.10.0",
+    "react-i18next": "^12.2.0",
     "react-icons": "^4.8.0",
     "slugify": "^1.6.5",
     "validator": "^13.9.0"

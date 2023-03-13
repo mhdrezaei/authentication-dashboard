@@ -6,6 +6,6 @@ export const dictionaryList = { en, fa, de };
 
 export const languageOptions = {
   en: 'English',
-  tr: 'Türkçe',
+  fa: 'farsi',
   de: 'Deutsch'
 };

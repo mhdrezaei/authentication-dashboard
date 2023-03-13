@@ -6,7 +6,8 @@ import reportWebVitals from "./reportWebVitals";
 import { UserProvider } from "./context/userContext";
 import { ThemeProvider } from "./context/themeContext";
 import { CompanyProvider } from "./context/companyContext";
-
+// import { LanguageProvider } from "./context/langContext";
+import "./i18n";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -14,10 +15,9 @@ root.render(
   <React.StrictMode>
     <UserProvider>
       <CompanyProvider>
-
-      <ThemeProvider>
-        <App />
-      </ThemeProvider>
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
       </CompanyProvider>
     </UserProvider>
   </React.StrictMode>
