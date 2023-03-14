@@ -123,7 +123,7 @@ const CompanyForm = () => {
               </div>
               <div className="w-full md:w-1/2 px-3">
                 <label className="form-label" htmlFor="family">
-                  Last Name
+                  {t("lastName")}
                 </label>
                 <input
                   className="form-input"
@@ -140,7 +140,7 @@ const CompanyForm = () => {
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <label className="form-label" htmlFor="title">
-                  Official Company Name
+                  {t("officialCompanyName")}
                 </label>
                 <input
                   className="form-input mb-3"
@@ -154,7 +154,7 @@ const CompanyForm = () => {
               </div>
               <div className="w-full md:w-1/2 px-3">
                 <label className="form-label" htmlFor="selectedFile">
-                  official Logo
+                  {t("officialLogo")}
                 </label>
                 <input
                   className="form-input"
@@ -172,7 +172,7 @@ const CompanyForm = () => {
                   <img src={preview} className="w-full h-full" />
                 ) : (
                   <span className="flex flex-col justify-center items-center w-full h-full">
-                    Company Logo
+                    {t("companyLogo")}
                   </span>
                 )}
               </div>
@@ -181,7 +181,7 @@ const CompanyForm = () => {
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full px-3">
                 <label className="form-label" htmlFor="address">
-                  Company Address
+                  {t("companyAddress")}
                 </label>
                 <input
                   className="form-input mb-3"
@@ -198,7 +198,7 @@ const CompanyForm = () => {
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <label className="form-label" htmlFor="email">
-                  Email Address
+                  {t("emailAddress")}
                 </label>
                 <input
                   className="form-input  mb-3  "
@@ -212,7 +212,7 @@ const CompanyForm = () => {
               </div>
               <div className="w-full md:w-1/2 px-3">
                 <label className="form-label" htmlFor="phone">
-                  Phone number
+                  {t("phoneNumber")}
                 </label>
                 <input
                   className="form-input \"
@@ -229,7 +229,7 @@ const CompanyForm = () => {
             <div className="flex flex-wrap -mx-3 mb-2">
               <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                 <label className="form-label" htmlFor="registration">
-                  Registration Number
+                  {t("registrationNumber")}
                 </label>
                 <input
                   className="form-input      "
@@ -243,7 +243,7 @@ const CompanyForm = () => {
               </div>
               <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                 <label className="form-label" htmlFor="zip">
-                  Zip Code
+                  {t("zipCode")}
                 </label>
                 <input
                   className="form-input      "
@@ -257,7 +257,7 @@ const CompanyForm = () => {
               </div>
               <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                 <label className="form-label" htmlFor="city">
-                  City
+                  {t("city")}
                 </label>
                 <input
                   className="form-input      "
@@ -271,7 +271,7 @@ const CompanyForm = () => {
               </div>
             </div>
             <div className="w-full text-center">
-              <Button label={isLoading ? "Loading..." : "Submit"} />
+              <Button label={isLoading ? t("Loading...") : t("Submit")} />
             </div>
           </div>
           <div className="hidden lg:flex flex-col justify-start items-center w-96 ">
@@ -281,7 +281,7 @@ const CompanyForm = () => {
                 <img src={preview} className="w-full h-full" />
               ) : (
                 <span className="flex flex-col justify-center items-center w-full h-full">
-                  Company Logo
+                  {t("companyLogo")}
                 </span>
               )}
             </div>
