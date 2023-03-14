@@ -5,5 +5,10 @@
   "officialLogo": "Official Logo",
   "companyAddress": "Company Address",
   "emailAddress": "Email Address",
-  "phoneNumber": "Phone Number"
+  "phoneNumber": "Phone Number",
+  "registrationNumber": "Registration Number",
+  "zipCode": "zip Code",
+  "City": "City",
+  "Loading..." : "Loading...",
+  "submit" : "Submit"
 }

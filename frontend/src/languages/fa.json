@@ -5,5 +5,10 @@
   "officialLogo": "لوگوی رسمی",
   "companyAddress": "آدرس شرکت",
   "emailAddress": "ایمیل",
-  "phoneNumber": "شماره تماس"
+  "phoneNumber": "شماره تماس",
+  "registrationNumber": "شماره ثبت",
+  "zipCode": "کد پستی",
+  "city": "شهر",
+  "Loading...": "در حال بارگذاری...",
+  "submit": "ارسال"
 }
