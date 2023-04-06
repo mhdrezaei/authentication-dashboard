@@ -6,7 +6,7 @@ body {
   @apply bg-gray-100 dark:bg-darkBlue5 dark:text-gray-300 font-opensans;
 }
 .btn-header {
-  @apply text-accentBlueDark mx-2 rtl:ml-2 ltr:mr-2 rounded-lg text-base p-2 ring-1 ring-gray-300 dark:ring-darkBlue1 dark:hover:ring-accentBlue hover:ring-gray-400 hover:bg-gray-200 dark:hover:bg-darkBlue3 focus:outline-none focus:ring-1 focus:ring-gray-200 dark:focus:ring-darkBlue2;
+  @apply text-accentBlueDark mx-2 rtl:ml-2 ltr:mr-2 rounded-lg text-base p-2 px-4 ring-1 ring-gray-300 dark:ring-darkBlue1 dark:hover:ring-accentBlue hover:ring-gray-400 hover:bg-gray-200 dark:hover:bg-darkBlue3 focus:outline-none focus:ring-1 focus:ring-gray-200 dark:focus:ring-darkBlue2;
 }
 .nav-item {
   @apply text-lg text-gray-700 bg-gray-200 p-2 dark:text-gray-200 dark:bg-darkBlue2  dark:border-t-0 dark:border-t-accentBlue;

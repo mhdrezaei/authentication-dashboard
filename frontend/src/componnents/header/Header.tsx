@@ -1,15 +1,27 @@
 import React, { useContext, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ThemeContext, { themeContextType } from "../../context/themeContext";
+import { uiActions } from "../../store/uiSlice";
+import { RootState } from "../../store";
+
 import SelectLang from "../common/SelectLang";
 
 function Header() {
-  const { isDark, isRtl, switchDir, switchTheme } = useContext(
-    ThemeContext
-  ) as themeContextType;
+  const dispatch = useDispatch();
+  const isDarkMode = useSelector((state : RootState) => state.ui.isDark)
+  
+  
+
+  const switchThemeHandler = () => {
+    dispatch(uiActions.switchTheme())
+  }
+  // const switchDirHandler = () => {
+  //   dispatch(uiActions.switchDir())
+  // }
 
   useEffect(() => {
-    switchTheme();
-    switchDir();
+    dispatch(uiActions.switchTheme())    
+    dispatch(uiActions.switchDir())
   }, []);
   return (
     <header className="mx-auto mt-4 px-6 text-center h-40 md:h-20 border-b-2 border-darkBlue1 dark:border-accentBlue ">
@@ -19,13 +31,13 @@ function Header() {
           {/* Dark/Light Mode Button  */}
           <button
             id="theme-toggle"
-            onClick={switchTheme}
+            onClick={switchThemeHandler}
             className="btn-header"
           >
             {/* Dark SVG Icon */}
             <svg
               id="theme-toggle-dark-icon"
-              className={isDark ? "w-5 h-5 hidden" : "w-5 h-5"}
+              className={isDarkMode ? "w-5 h-5 hidden" : "w-5 h-5"}
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -34,7 +46,7 @@ function Header() {
             {/* Light SVG Icon  */}
             <svg
               id="theme-toggle-light-icon"
-              className={isDark ? "w-5 h-5" : "w-5 h-5 hidden"}
+              className={isDarkMode ? "w-5 h-5" : "w-5 h-5 hidden"}
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -46,10 +58,11 @@ function Header() {
               ></path>
             </svg>
           </button>
-          <button id="theme-toggle" onClick={switchDir} className="btn-header">
+          {/* when we have two language for example EN and FA  */}
+          {/* <button id="theme-toggle" onClick={switchDirHandler} className="btn-header">
             <p className={isRtl ? "hidden" : "text-base w-5 h-5 "}>EN</p>
             <p className={isRtl ? "text-base w-5 h-5" : "hidden"}>FA</p>
-          </button>
+          </button> */}
           <SelectLang />
         </div>
       </div>

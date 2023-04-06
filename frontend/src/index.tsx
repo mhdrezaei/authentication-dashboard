@@ -6,6 +6,8 @@ import reportWebVitals from "./reportWebVitals";
 import { UserProvider } from "./context/userContext";
 import { ThemeProvider } from "./context/themeContext";
 import { CompanyProvider } from "./context/companyContext";
+import { Provider } from "react-redux";
+import store from "./store/index"
 // import { LanguageProvider } from "./context/langContext";
 import "./i18n";
 const root = ReactDOM.createRoot(
@@ -13,6 +15,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
+
     <UserProvider>
       <CompanyProvider>
         <ThemeProvider>
@@ -20,6 +24,7 @@ root.render(
         </ThemeProvider>
       </CompanyProvider>
     </UserProvider>
+    </Provider>
   </React.StrictMode>
 );
 
