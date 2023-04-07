@@ -50,7 +50,7 @@ const uiInitialState = {
                 if (localStorage.getItem("lang-theme")) {
                     console.log(localStorage.getItem("lang-theme"))
                     // If en, make fa and save in localstorage
-                    if (localStorage.getItem("lang-theme") === "fa" || "de") {
+                    if (localStorage.getItem("lang-theme") === "en" || localStorage.getItem("lang-theme") === "de") {
                         document.documentElement.removeAttribute("dir");
                         document.documentElement.setAttribute("dir", "ltr");
                         state.isRtl = false

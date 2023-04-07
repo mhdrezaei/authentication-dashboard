@@ -1,10 +1,9 @@
-import React, { useContext , useEffect } from "react";
+import React, { useContext } from "react";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 import { useDispatch , useSelector } from "react-redux";
-import { uiActions } from "./store/uiSlice";
-import { RootState } from "./store/index";
+
 import {
   BrowserRouter as Router,
   Navigate,
@@ -19,7 +18,7 @@ import AddCompany from "./pages/AddCompany";
 
 function App() {
   const dispatch = useDispatch();
-  const isDarkMode = useSelector((state : RootState) => state.ui.isDark)
+  // const isDarkMode = useSelector((state : RootState) => state.ui.isDark)
   const { isLogin, confirmLogin } = useContext(UserContext) as userContextType;
   const signIn = hasJwt();
   if (signIn) {

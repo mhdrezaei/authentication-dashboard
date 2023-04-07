@@ -1,6 +1,5 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ThemeContext, { themeContextType } from "../../context/themeContext";
 import { uiActions } from "../../store/uiSlice";
 import { RootState } from "../../store";
 
@@ -22,7 +21,7 @@ function Header() {
   useEffect(() => {
     dispatch(uiActions.switchTheme())    
     dispatch(uiActions.switchDir())
-  }, []);
+  },[]);
   return (
     <header className="mx-auto mt-4 px-6 text-center h-40 md:h-20 border-b-2 border-darkBlue1 dark:border-accentBlue ">
       <div className="flex items-center justify-between">
