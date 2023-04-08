@@ -5,6 +5,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler } from "react-hook-form/dist/types/form";
 import UserContext, { userContextType } from "../context/userContext";
 
+import { useSelector, useDispatch } from "react-redux";
+import { login } from "../store/authSlice";
+import { AppDispatch, RootState } from "../store";
+
 import Input from "./common/Input";
 import SlideButton from "./common/SlideButton";
 import { FiLock, FiMail } from "react-icons/fi";
@@ -20,6 +24,10 @@ const FormSchema = z.object({
 type FormSchemaType = z.infer<typeof FormSchema>;
 
 const LoginForm: React.FunctionComponent = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { user, isLoading, isSuccess, message } = useSelector(
+    (state: RootState) => state.auth
+  );
   const {
     register,
     handleSubmit,
@@ -27,11 +35,11 @@ const LoginForm: React.FunctionComponent = () => {
   } = useForm<FormSchemaType>({
     resolver: zodResolver(FormSchema),
   });
-  const { login } = useContext(UserContext) as userContextType;
+  // const { login } = useContext(UserContext) as userContextType;
 
   const onSubmit: SubmitHandler<FormSchemaType> = (values) => {
     console.log(values);
-    login(values)
+    dispatch(login(values));
   };
 
   return (
